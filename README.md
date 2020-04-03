@@ -12,4 +12,4 @@ external references...blah blah blah
 
 ### Who do I cuss out? ###
 
-* Andrew L. Ayers - junkbotix@gmail.com / www.phoenixgarage.org
+* Andrew L. Ayers - junkbotix@gmail.com [ www.phoenixgarage.org ]
