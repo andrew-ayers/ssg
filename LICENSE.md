@@ -4,7 +4,7 @@ Unless otherwise specified, all code is licensed as GPLv3 (http://www.gnu.org/li
 
 ### License ###
 
-Copyright (C) 2016 by Andrew L. Ayers
+Copyright (C) 2020 by Andrew L. Ayers
 
 This program is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -21,4 +21,4 @@ Street, Fifth Floor, Boston, MA 02110-1301  USA
 
 ### Who do I cuss out? ###
 
-* Andrew L. Ayers - junkbotix@gmail.com [ www.phoenixgarage.org ]
+* Andrew L. Ayers - andrewa@phoenixgarage.org [ www.phoenixgarage.org ]

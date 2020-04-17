@@ -1,0 +1,13 @@
+body {
+    height: 100%;
+    max-width: 100%;
+    margin: 2em;
+    font-family: "Verdana, Geneva, sans-serif";
+    font: 1.2em/1.62 sans-serif;
+    background-color: #ddd;
+    color: #333;
+}
+
+h1,h2,h3 {
+    line-height: 1.2;
+}
