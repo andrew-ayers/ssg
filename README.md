@@ -1,4 +1,4 @@
-# Bash Static Site Generator v1.0.0 #
+# Bash Static Site Generator v1.0.1 #
 
 SSG is a "static site generator" written in Bash, with a few external references to various required utilities (pandoc being chief among them) needed in order to build a site using Markdown files. It was originally based on [this example](https://skilstak.io/building-an-ssg-with-pandoc-and-bash/).
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Bash Static Site Generator v1.0.0
+# Bash Static Site Generator v1.0.1
 #
 # Copyright (c) 2020 by Andrew L. Ayers
 #
@@ -39,7 +39,7 @@
 script_name=`basename "$0"`
 
 # Version information
-version_info="v1.0.0"
+version_info="v1.0.1"
 
 # Initialize various flags for command line options
 do_browser=0
