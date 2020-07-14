@@ -16,6 +16,7 @@ I wasn't able to get the code in the example to work as-is, but it did inspire m
    * pandoc - what actually builds the html files from the markdown/templates
    * readlink - for script base path retrieval
    * scp - secure copy to upload tar.gz file to remote server
+   * sed - stream editor (used for a search/replace operation for tags)
    * tar - archives files of static site (for upload to remote server)
 
 3. Note that you can re-define your own local web server and browser to fit your needs; see System Variables below for details

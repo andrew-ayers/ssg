@@ -236,11 +236,15 @@ build_article_components () {
 }
 
 build_tag_md () {
-    local tag=${1%}
+    # Clean passed in tag of any extra newlines
+    local tag=$(echo ${1%}|tr -d '\n')
     local dir=${2%}
 
     if [ ! -f "./tags/$tag.md" ]; then
-        printf "\n\n## $tag:" >> "./tags/$tag.md"
+        printf "\n\n<p class=\"anchor\">" >> "./tags/$tag.md"
+        printf "\n<a id=\"$tag\" class=\"anchor\"></a>" >> "./tags/$tag.md"
+        printf "\n</p>" >> "./tags/$tag.md"
+        printf "\n<h2>$tag:</h2>" >> "./tags/$tag.md"
     fi
     
     printf "\n\n**[$fm_title](../$dir)** - *$fm_date*" >> "./tags/$tag.md"
