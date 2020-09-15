@@ -7,17 +7,22 @@ I wasn't able to get the code in the example to work as-is, but it did inspire m
 ### Installation and Usage ###
 
 1. Download (and extract) or clone the repo to a desired folder
-2. Install the following dependencies:
+2. Install the following dependencies (* = core file):
 
    * caddy - local web server (user-definable)
    * chromium-browser - local web browser (user-definable)
    * gzip - compression for tar file (uploaded to remote server)
-   * nohup - for silencing browser startup output when not in verbose mode
+   * nohup - for silencing browser startup output when not in verbose mode (*)
    * pandoc - what actually builds the html files from the markdown/templates
+   * basename - for reading script name (*)
+   * dirname - for reading the folder name of the script (*)
    * readlink - for script base path retrieval
    * scp - secure copy to upload tar.gz file to remote server
    * sed - stream editor (used for a search/replace operation for tags)
    * tar - archives files of static site (for upload to remote server)
+   * killall, rm, mkdir, touch, and others - various needs (*)
+
+   Please note that not all dependencies may be listed; some files are core or system files that should be installed by default...
 
 3. Note that you can re-define your own local web server and browser to fit your needs; see System Variables below for details
 4. Set the `ssg.sh` file to be executable (`chmod +x ssg.sh`)
