@@ -1,4 +1,4 @@
-# Bash Static Site Generator v1.0.1 #
+# Bash Static Site Generator v1.1.0 # 
 
 SSG is a "static site generator" written in Bash, with a few external references to various required utilities (pandoc being chief among them) needed in order to build a site using Markdown files. It was originally based on [this example](https://skilstak.io/building-an-ssg-with-pandoc-and-bash/).
 
@@ -43,14 +43,14 @@ A set of user-defined system variables needs to be created in a file named `sett
 
     # Settings and options for local server and browser processes
     server="caddy"
-    server_options="-quiet"
-    local="http://localhost:2015"
+    server_options="start"
+    local="http://localhost"
     browser="chromium-browser"
 
     # List of non-article content type nodes
     exclusions="about|contact|resources|resume|tags"
 
-These variables (at a minimum ssh_login and scp_path) will need to be updated  to reflect your current server settings or preferences:
+These variables (at a minimum ssh_login and scp_path) will need to be updated to reflect your current server settings or preferences:
 
 1. **temppath** - this path should point to a folder to hold temporary files created during generation process (eg: for tar.gz file uploaded to remote server)
    
@@ -71,6 +71,18 @@ These variables (at a minimum ssh_login and scp_path) will need to be updated  t
 9. **exclusions** - a pipe-delimited set of content nodes to exclude from being run through the article node generation process. Tags are not created for excluded nodes (Note: Each node listed should be seperated by the pipe character symbol for proper parsing by the generator)
 
 **Warning:** Remember to add `settings.sh` to your git exclusion list (ie - `.git/info/exclude` or `.gitignore`) if you intend to use git for versioning the generator, especially if you are using github, and/or if there is any sensitive login information used in the settings file.
+
+### A Note On Using Caddy As Your Local Web Server ###
+
+If you decide to use Caddy, you may also need to add a Caddyfile in the root of your site, as shown in the [caddy tutorial](https://caddyserver.com/docs/caddyfile-tutorial).
+
+I found the following settings in the file to be adequate:
+
+    localhost
+
+    file_server browse
+
+...but you may need additional settings.
 
 ### Backup Process ###
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Bash Static Site Generator v1.0.1
+# Bash Static Site Generator v1.1.0
 #
 # Copyright (c) 2020 by Andrew L. Ayers
 #
@@ -39,7 +39,7 @@
 script_name=`basename "$0"`
 
 # Version information
-version_info="v1.0.1"
+version_info="v1.1.0"
 
 # Initialize various flags for command line options
 do_browser=0
@@ -103,7 +103,7 @@ out () {
 
 start_server () {
     out "Restarting local webserver ($server)"
-    killall -q $server; $server $server_options &
+    killall -q $server; $server $server_options >/dev/null 2>&1
 }
 
 start_browser () {
@@ -249,7 +249,6 @@ build_tag_md () {
     
     printf "\n\n**[$fm_title](../$dir)** - *$fm_date*" >> "./tags/$tag.md"
     printf "\n\n> $fm_abstract" >> "./tags/$tag.md"
-    printf "\n\n" >> "./tags/$tag.md"
 }
 
 build_root_readme_tag_line () {
@@ -279,12 +278,19 @@ build_root_readme () {
 
     source "$dir"front_matter.sh
 
+    # Add title element to keep pandoc happy
+    if [ ! -f "README.md" ]; then
+        printf -- "---\n" >> README.md
+        printf "title: '...'\n" >> README.md
+        printf -- "---\n\n" >> README.md
+    fi
+
     printf "**[$fm_title](./$dir)** - *$fm_date*" >> README.md
     printf "\n\n> $fm_abstract" >> README.md
 
     build_root_readme_tag_line "$dir"
 
-    printf "\n\n----\n\n" >> README.md
+    printf "\n\n---\n\n" >> README.md
 }
 
 build_home () {
@@ -304,7 +310,7 @@ build_tags () {
         for file in `ls -a ./tags/*.md`; do
             if [ -z "$break" ]; then
                 # Add a section break line
-                printf "\n\n----\n\n" >> ./tags/README.md
+                printf "\n\n---" >> ./tags/README.md
             fi
 
             cat "$file" >> ./tags/README.md
@@ -314,6 +320,9 @@ build_tags () {
 
         # Delete all tag.md files, leaving README.md
         rm `ls -a ./tags/*.md | egrep -v "README.md"`
+
+        # Prepend title element to keep pandoc happy
+        echo -e "---\ntitle: '...'\n---$(cat ./tags/README.md)" > ./tags/README.md
 
         # Build tags index.html
         out "Building tags page"
